@@ -46,7 +46,7 @@ if not exist "%VENV_DIR%\pip-updated.flag" (
 
 echo Verificando dependencias Python...
 set "MISSING_PKGS="
-for /f "usebackq tokens=*" %%i in (`"%VENV_PY%" -c "import importlib.util as u; pkgs={'esptool':'esptool','requests':'requests','qrcode':'qrcode','pyserial':'serial','pywin32':'win32com','pillow':'PIL'}; missing=[name for name,mod in pkgs.items() if u.find_spec(mod) is None]; print(' '.join(missing))"`) do set "MISSING_PKGS=%%i"
+for /f "usebackq tokens=*" %%i in (`"%VENV_PY%" -c "import importlib.util as u; pkgs={'esptool':'esptool','requests':'requests','qrcode':'qrcode','pyserial':'serial','pywin32':'win32com','pillow':'PIL','cryptography':'cryptography'}; missing=[name for name,mod in pkgs.items() if u.find_spec(mod) is None]; print(' '.join(missing))"`) do set "MISSING_PKGS=%%i"
 
 if defined MISSING_PKGS (
     echo Instalando dependencias faltantes: %MISSING_PKGS%
